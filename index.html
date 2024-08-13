@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+        body {
+            margin: 0;
+            font-family: "JetBrains Mono", Arial, sans-serif;
+            background-color: #161716;
+            color: #FFFEFE;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: #FFFEFE dashed 2px;
+        }
+
+        .logoText {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-menu a {
+            color: #FFFEFE;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 18px;
+        }
+
+        .hero{
+            display: flex;
+            height: 85vh;
+            justify-content: space-around;
+            padding-top: 10vh;
+        }
+        .hero .text{
+            font-size: 0.3rem;
+        }
+        .hero .img{
+            font-size: 1rem;
+        }
+        .about{
+            background-color: #3a3b3a;
+        }
+        .about, .skills{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 3rem 10rem;
+            text-align: center;
+        }
+        .text{
+            font-size: 0.4rem;
+            padding-bottom: 2rem;
+        }
+        .about p{
+            font-size: 18px;
+        }
+        .list{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5rem;
+        }
+        .list img{
+            max-height: 10rem;
+            max-width: 10rem;
+        }
+
+        .list div{
+            width: 100%;
+            border: 2px white solid;
+            border-radius: 15px;
+            padding: 1rem;
+            display: flex;
+            justify-items:center;
+            align-items:center;
+            justify-content: space-evenly;
+            
+        }
+        .list pre{
+            font-size: 0.3rem;
+        }
+
+        #circle {
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+        #circle span {
+            position: absolute;
+            font-size: 20px;
+            transform-origin: center;
+            pointer-events: none;
+        }
+
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #circle {
+            animation: rotate 10s linear infinite;
+        }
+
+        /* Add brackets on hover */
+        a::before, a::after {
+            content: '';
+            
+            opacity: 0;
+            transition: opacity 0.3s, left 0.3s, right 0.3s;
+        }
+
+        a::before {
+            content: '[';
+            left: 0;
+            transform: translateX(-100%);
+        }
+
+        a::after {
+            content: ']';
+            right: 0;
+            transform: translateX(100%);
+        }
+
+        a:hover::before, a:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero p{
+            font-size: 2rem;
+        }
+        .hero a{
+            color: #0f0;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logoText">Ayoub Ben Yedder</div>
+        <div class="nav-menu">
+            <a href="#home">About</a>
+            <a href="#about">Skills</a>
+            <a href="#about">Projects</a>
+            <a href="#services">Contacts</a>
+            <a href="#contact">Resume</a>
+        </div>
+    </nav>
+    <div class="hero">
+        <div class="desc">
+        <pre class="text">
+   █████████                                  █████        ███████████                         █████ █████              █████     █████                                                                                                                               
+  ███░░░░░███                                ░░███        ░░███░░░░░███                       ░░███ ░░███              ░░███     ░░███                                                                                                                                
+ ░███    ░███  █████ ████  ██████  █████ ████ ░███████     ░███    ░███  ██████  ████████      ░░███ ███    ██████   ███████   ███████   ██████  ████████                                                                                                             
+ ░███████████ ░░███ ░███  ███░░███░░███ ░███  ░███░░███    ░██████████  ███░░███░░███░░███      ░░█████    ███░░███ ███░░███  ███░░███  ███░░███░░███░░███                                                                                                            
+ ░███░░░░░███  ░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███    ░███░░░░░███░███████  ░███ ░███       ░░███    ░███████ ░███ ░███ ░███ ░███ ░███████  ░███ ░░░                                                                                                             
+ ░███    ░███  ░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███    ░███    ░███░███░░░   ░███ ░███        ░███    ░███░░░  ░███ ░███ ░███ ░███ ░███░░░   ░███                                                                                                                 
+ █████   █████ ░░███████ ░░██████  ░░████████ ████████     ███████████ ░░██████  ████ █████       █████   ░░██████ ░░████████░░████████░░██████  █████                                                                                                                
+░░░░░   ░░░░░   ░░░░░███  ░░░░░░    ░░░░░░░░ ░░░░░░░░     ░░░░░░░░░░░   ░░░░░░  ░░░░ ░░░░░       ░░░░░     ░░░░░░   ░░░░░░░░  ░░░░░░░░  ░░░░░░  ░░░░░                                                                                                                 
+                ███ ░███                                                                                                                                                                                                                                              
+               ░░██████                                                                                                                                                                                                                                               
+                ░░░░░░                                                                                                                                                                                                                                                
+   █████████                      ███             ███                           █████████               █████                                        █████     ███                         ██████████                      ███                                        
+  ███░░░░░███                    ░░░             ░░░                           ███░░░░░███             ░░███                                        ░░███     ░░░                         ░░███░░░░░█                     ░░░                                         
+ ░███    ░███   █████  ████████  ████  ████████  ████  ████████    ███████    ░███    ░███  █████ ████ ███████    ██████  █████████████    ██████   ███████   ████   ██████  ████████      ░███  █ ░  ████████    ███████ ████  ████████    ██████   ██████  ████████ 
+ ░███████████  ███░░  ░░███░░███░░███ ░░███░░███░░███ ░░███░░███  ███░░███    ░███████████ ░░███ ░███ ░░░███░    ███░░███░░███░░███░░███  ░░░░░███ ░░░███░   ░░███  ███░░███░░███░░███     ░██████   ░░███░░███  ███░░███░░███ ░░███░░███  ███░░███ ███░░███░░███░░███
+ ░███░░░░░███ ░░█████  ░███ ░███ ░███  ░███ ░░░  ░███  ░███ ░███ ░███ ░███    ░███░░░░░███  ░███ ░███   ░███    ░███ ░███ ░███ ░███ ░███   ███████   ░███     ░███ ░███ ░███ ░███ ░███     ░███░░█    ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███████ ░███████  ░███ ░░░ 
+ ░███    ░███  ░░░░███ ░███ ░███ ░███  ░███      ░███  ░███ ░███ ░███ ░███    ░███    ░███  ░███ ░███   ░███ ███░███ ░███ ░███ ░███ ░███  ███░░███   ░███ ███ ░███ ░███ ░███ ░███ ░███     ░███ ░   █ ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███░░░  ░███░░░   ░███     
+ █████   █████ ██████  ░███████  █████ █████     █████ ████ █████░░███████    █████   █████ ░░████████  ░░█████ ░░██████  █████░███ █████░░████████  ░░█████  █████░░██████  ████ █████    ██████████ ████ █████░░███████ █████ ████ █████░░██████ ░░██████  █████    
+░░░░░   ░░░░░ ░░░░░░   ░███░░░  ░░░░░ ░░░░░     ░░░░░ ░░░░ ░░░░░  ░░░░░███   ░░░░░   ░░░░░   ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░░░    ░░░░░  ░░░░░  ░░░░░░  ░░░░ ░░░░░    ░░░░░░░░░░ ░░░░ ░░░░░  ░░░░░███░░░░░ ░░░░ ░░░░░  ░░░░░░   ░░░░░░  ░░░░░     
+                       ░███                                       ███ ░███                                                                                                                                       ███ ░███                                             
+                       █████                                     ░░██████                                                                                                                                       ░░██████                                              
+                      ░░░░░                                       ░░░░░░                                                                                                                                         ░░░░░░                                               
+        </pre>
+        <p>Bridging the gap between software <br> and hardware in industrial systems.</p>
+        <a href="#">View Projects</a> <a href="#">See Resume</a> <a href="#">Contact Me</a>
+        </div>
+        <pre class="img">
+                       _____
+                   .d88888888bo.
+                 .d8888888888888b.
+                 8888888888888888b
+                 888888888888888888
+                 888888888888888888
+                  Y8888888888888888
+            ,od888888888888888888P
+         .'`Y8P'```'Y8888888888P'
+       .'_   `  _     'Y88888888b
+      /  _`    _ `      Y88888888b   ____
+   _  | /  \  /  \      8888888888.d888888b.
+  d8b | | /|  | /|      8888888888d8888888888b
+ 8888_\ \_|/  \_|/      d888888888888888888888b
+ .Y8P  `'-.            d88888888888888888888888
+/          `          `      `Y8888888888888888
+|                        __    888888888888888P
+ \                       / `   dPY8888888888P'
+  '._                  .'     .'  `Y888888P`
+     `"'-.,__    ___.-'    .-'
+    jgs  `-._````  __..--'`
+             ``````
+        </pre>
+    </div>
+    <div class="about">
+        <pre class="text">
+            █████████   █████                          █████       ██████   ██████         
+            ███░░░░░███ ░░███                          ░░███       ░░██████ ██████          
+           ░███    ░███  ░███████   ██████  █████ ████ ███████      ░███░█████░███   ██████ 
+           ░███████████  ░███░░███ ███░░███░░███ ░███ ░░░███░       ░███░░███ ░███  ███░░███
+           ░███░░░░░███  ░███ ░███░███ ░███ ░███ ░███   ░███        ░███ ░░░  ░███ ░███████ 
+           ░███    ░███  ░███ ░███░███ ░███ ░███ ░███   ░███ ███    ░███      ░███ ░███░░░  
+           █████   █████ ████████ ░░██████  ░░████████  ░░█████     █████     █████░░██████ 
+          ░░░░░   ░░░░░ ░░░░░░░░   ░░░░░░    ░░░░░░░░    ░░░░░     ░░░░░     ░░░░░  ░░░░░░  
+        </pre>
+        <p>
+            I'm a 21-year-old student in my second year of Industrial Computing and Automation at INSAT. I'm passionate about blending technology with industrial processes, particularly in robotics, control systems, and automation. My studies and projects have equipped me with skills in programming, electronics, and system design. I’m eager to contribute to smarter, more efficient industrial solutions.         </p>
+    </div>
+    <div class="skills">
+        <pre class="text">
+            █████████  █████       ███  ████  ████         
+            ███░░░░░███░░███       ░░░  ░░███ ░░███         
+           ░███    ░░░  ░███ █████ ████  ░███  ░███   █████ 
+           ░░█████████  ░███░░███ ░░███  ░███  ░███  ███░░  
+            ░░░░░░░░███ ░██████░   ░███  ░███  ░███ ░░█████ 
+            ███    ░███ ░███░░███  ░███  ░███  ░███  ░░░░███
+           ░░█████████  ████ █████ █████ █████ █████ ██████ 
+            ░░░░░░░░░  ░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░░  
+        </pre>
+        <div class="list">
+            <div class="webDev">
+                <pre>
+                    █████   ███   █████          █████        ██████████                       
+                    ░░███   ░███  ░░███          ░░███        ░░███░░░░███                      
+                     ░███   ░███   ░███   ██████  ░███████     ░███   ░░███  ██████  █████ █████
+                     ░███   ░███   ░███  ███░░███ ░███░░███    ░███    ░███ ███░░███░░███ ░░███ 
+                     ░░███  █████  ███  ░███████  ░███ ░███    ░███    ░███░███████  ░███  ░███ 
+                      ░░░█████░█████░   ░███░░░   ░███ ░███    ░███    ███ ░███░░░   ░░███ ███  
+                        ░░███ ░░███     ░░██████  ████████     ██████████  ░░██████   ░░█████   
+                         ░░░   ░░░       ░░░░░░  ░░░░░░░░     ░░░░░░░░░░    ░░░░░░     ░░░░░    
+                </pre>
+                <img src="assets/html.svg" alt="HTML">
+                <img src="assets/css.svg" alt="HTML">
+                <img src="assets/javascript.svg" alt="HTML">
+                <img src="assets/php.svg" alt="HTML">
+                <img src="assets/MySQL.svg" alt="HTML">
+            </div>
+            <div class="Programming">
+                <pre>
+                    ███████████                                                                                   ███                     
+                    ░░███░░░░░███                                                                                 ░░░                      
+                     ░███    ░███ ████████   ██████   ███████ ████████   ██████   █████████████   █████████████   ████  ████████    ███████
+                     ░██████████ ░░███░░███ ███░░███ ███░░███░░███░░███ ░░░░░███ ░░███░░███░░███ ░░███░░███░░███ ░░███ ░░███░░███  ███░░███
+                     ░███░░░░░░   ░███ ░░░ ░███ ░███░███ ░███ ░███ ░░░   ███████  ░███ ░███ ░███  ░███ ░███ ░███  ░███  ░███ ░███ ░███ ░███
+                     ░███         ░███     ░███ ░███░███ ░███ ░███      ███░░███  ░███ ░███ ░███  ░███ ░███ ░███  ░███  ░███ ░███ ░███ ░███
+                     █████        █████    ░░██████ ░░███████ █████    ░░████████ █████░███ █████ █████░███ █████ █████ ████ █████░░███████
+                    ░░░░░        ░░░░░      ░░░░░░   ░░░░░███░░░░░      ░░░░░░░░ ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░███
+                                                     ███ ░███                                                                      ███ ░███
+                                                    ░░██████                                                                      ░░██████ 
+                                                     ░░░░░░                                                                        ░░░░░░  
+                </pre>
+                    <img src="assets/C.svg" alt="HTML">
+                    <img src="assets/cpp.svg" alt="HTML">
+                    <img src="assets/java.svg" alt="HTML">
+                    <img src="assets/python.svg" alt="HTML">
+            </div>
+            <div class="robotics">
+                <pre>
+                    ███████████            █████               █████     ███                  
+                    ░░███░░░░░███          ░░███               ░░███     ░░░                   
+                     ░███    ░███   ██████  ░███████   ██████  ███████   ████   ██████   █████ 
+                     ░██████████   ███░░███ ░███░░███ ███░░███░░░███░   ░░███  ███░░███ ███░░  
+                     ░███░░░░░███ ░███ ░███ ░███ ░███░███ ░███  ░███     ░███ ░███ ░░░ ░░█████ 
+                     ░███    ░███ ░███ ░███ ░███ ░███░███ ░███  ░███ ███ ░███ ░███  ███ ░░░░███
+                     █████   █████░░██████  ████████ ░░██████   ░░█████  █████░░██████  ██████ 
+                    ░░░░░   ░░░░░  ░░░░░░  ░░░░░░░░   ░░░░░░     ░░░░░  ░░░░░  ░░░░░░  ░░░░░░  
+                </pre>
+                <img src="assets/arduino.svg" alt="HTML">
+                <img src="assets/esp.svg" alt="HTML">
+                <img src="assets/rasberry.svg" alt="HTML">
+                <img src="assets/KiCad.svg" alt="HTML">
+
+            </div>
+            <div class="typeSetting">
+                <pre>
+                    ███████████                                   █████████            █████     █████     ███                     
+                    ░█░░░███░░░█                                  ███░░░░░███          ░░███     ░░███     ░░░                      
+                    ░   ░███  ░  █████ ████ ████████   ██████    ░███    ░░░   ██████  ███████   ███████   ████  ████████    ███████
+                        ░███    ░░███ ░███ ░░███░░███ ███░░███   ░░█████████  ███░░███░░░███░   ░░░███░   ░░███ ░░███░░███  ███░░███
+                        ░███     ░███ ░███  ░███ ░███░███████     ░░░░░░░░███░███████   ░███      ░███     ░███  ░███ ░███ ░███ ░███
+                        ░███     ░███ ░███  ░███ ░███░███░░░      ███    ░███░███░░░    ░███ ███  ░███ ███ ░███  ░███ ░███ ░███ ░███
+                        █████    ░░███████  ░███████ ░░██████    ░░█████████ ░░██████   ░░█████   ░░█████  █████ ████ █████░░███████
+                       ░░░░░      ░░░░░███  ░███░░░   ░░░░░░      ░░░░░░░░░   ░░░░░░     ░░░░░     ░░░░░  ░░░░░ ░░░░ ░░░░░  ░░░░░███
+                                  ███ ░███  ░███                                                                            ███ ░███
+                                 ░░██████   █████                                                                          ░░██████ 
+                                  ░░░░░░   ░░░░░                                                                            ░░░░░░  
+                </pre>
+                <img src="assets/latex.svg" style="filter: invert(1);" alt="HTML">
+            </div>
+        </div>                                       
+    </div>
+    <div id="circle"></div>
+    <script>
+        const text = "01001001-01001001-01000001-";
+        const circularText = document.getElementById('circle');
+        const radius = 50;
+        const characters = text.split('');
+        const angleStep = 360 / characters.length;
+
+        characters.forEach((char, i) => {
+            const span = document.createElement('span');
+            const angle = angleStep * i;
+            const x = radius * Math.cos(angle * Math.PI / 180);
+            const y = radius * Math.sin(angle * Math.PI / 180);
+            span.style.transform = `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`;
+            span.textContent = char;
+            circularText.appendChild(span);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const circleSize = 200; // Same as width and height of the circle
+            circularText.style.left = `${e.clientX - circleSize / 2}px`;
+            circularText.style.top = `${e.clientY - circleSize / 2}px`;
+        });
+    </script>
+</body>
+
+</html>
