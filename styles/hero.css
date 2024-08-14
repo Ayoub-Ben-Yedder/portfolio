@@ -34,4 +34,5 @@
     font-size: 1.3rem;
     border: 2px white dashed;
     background-color: #2f2d4b;
+    display: inline-block;
 }
