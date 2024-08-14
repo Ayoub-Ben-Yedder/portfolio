@@ -1,0 +1,30 @@
+@media (max-width: 1000px) {
+    body{
+        margin: 0;
+    }
+    .hero img{
+        display: none;
+    }
+    .hero{
+        grid-template-columns: 1fr;
+    }
+    .navbar{
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    img{
+        display: none;
+    }
+    .card{
+        grid-template-columns: 1fr;
+    }
+    .card a img{
+        display: block;
+    }
+
+    .contact pre{
+        font-size: 1rem;
+    }
+}

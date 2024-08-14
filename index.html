@@ -1,352 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-
-        body {
-            margin: 0;
-            font-family: "JetBrains Mono", Arial, sans-serif;
-            background-color: #161716;
-            color: #FFFEFE;
-            overflow-x: hidden;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            border-bottom: #FFFEFE dashed 2px;
-        }
-
-        .logoText {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-menu a {
-            color: #FFFEFE;
-            text-decoration: none;
-            padding: 0 15px;
-            font-size: 18px;
-        }
-
-        .hero{
-            display: flex;
-            height: 85vh;
-            justify-content: space-around;
-            padding-top: 10vh;
-        }
-        .hero .text{
-            font-size: 0.3rem;
-        }
-        .hero .img{
-            font-size: 1rem;
-        }
-        .about{
-            background-color: #3a3b3a;
-        }
-        .about, .skills{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 3rem 10rem;
-            text-align: center;
-        }
-        .text{
-            font-size: 0.4rem;
-            padding-bottom: 2rem;
-        }
-        .about p{
-            font-size: 18px;
-        }
-        .list{
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5rem;
-        }
-        .list img{
-            max-height: 10rem;
-            max-width: 10rem;
-        }
-
-        .list div{
-            width: 100%;
-            border: 2px white solid;
-            border-radius: 15px;
-            padding: 1rem;
-            display: flex;
-            justify-items:center;
-            align-items:center;
-            justify-content: space-evenly;
-            
-        }
-        .list pre{
-            font-size: 0.3rem;
-        }
-
-        #circle {
-            color: #0f0;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: 900;
-            position: fixed;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform-origin: center;
-            pointer-events: none;
-        }
-
-        #circle span {
-            position: absolute;
-            font-size: 20px;
-            transform-origin: center;
-            pointer-events: none;
-        }
-
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        #circle {
-            animation: rotate 10s linear infinite;
-        }
-
-        /* Add brackets on hover */
-        a::before, a::after {
-            content: '';
-            
-            opacity: 0;
-            transition: opacity 0.3s, left 0.3s, right 0.3s;
-        }
-
-        a::before {
-            content: '[';
-            left: 0;
-            transform: translateX(-100%);
-        }
-
-        a::after {
-            content: ']';
-            right: 0;
-            transform: translateX(100%);
-        }
-
-        a:hover::before, a:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .hero p{
-            font-size: 2rem;
-        }
-        .hero a{
-            color: #0f0;
-            
-        }
-    </style>
+    <title>Ayoub Ben Yedder</title>
+    <link rel="stylesheet" href="styles/root.css">
+    <link rel="stylesheet" href="styles/a.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/hero.css">
+    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/media.css">
 </head>
-
 <body>
+    <canvas id="matrix"></canvas>
+    <canvas id="cursor"></canvas>
     <nav class="navbar">
         <div class="logoText">Ayoub Ben Yedder</div>
         <div class="nav-menu">
-            <a href="#home">About</a>
-            <a href="#about">Skills</a>
-            <a href="#about">Projects</a>
-            <a href="#services">Contacts</a>
-            <a href="#contact">Resume</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contacts">Contacts</a>
+            <a href="#resume">Resume</a>
         </div>
     </nav>
-    <div class="hero">
-        <div class="desc">
-        <pre class="text">
-   █████████                                  █████        ███████████                         █████ █████              █████     █████                                                                                                                               
-  ███░░░░░███                                ░░███        ░░███░░░░░███                       ░░███ ░░███              ░░███     ░░███                                                                                                                                
- ░███    ░███  █████ ████  ██████  █████ ████ ░███████     ░███    ░███  ██████  ████████      ░░███ ███    ██████   ███████   ███████   ██████  ████████                                                                                                             
- ░███████████ ░░███ ░███  ███░░███░░███ ░███  ░███░░███    ░██████████  ███░░███░░███░░███      ░░█████    ███░░███ ███░░███  ███░░███  ███░░███░░███░░███                                                                                                            
- ░███░░░░░███  ░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███    ░███░░░░░███░███████  ░███ ░███       ░░███    ░███████ ░███ ░███ ░███ ░███ ░███████  ░███ ░░░                                                                                                             
- ░███    ░███  ░███ ░███ ░███ ░███ ░███ ░███  ░███ ░███    ░███    ░███░███░░░   ░███ ░███        ░███    ░███░░░  ░███ ░███ ░███ ░███ ░███░░░   ░███                                                                                                                 
- █████   █████ ░░███████ ░░██████  ░░████████ ████████     ███████████ ░░██████  ████ █████       █████   ░░██████ ░░████████░░████████░░██████  █████                                                                                                                
-░░░░░   ░░░░░   ░░░░░███  ░░░░░░    ░░░░░░░░ ░░░░░░░░     ░░░░░░░░░░░   ░░░░░░  ░░░░ ░░░░░       ░░░░░     ░░░░░░   ░░░░░░░░  ░░░░░░░░  ░░░░░░  ░░░░░                                                                                                                 
-                ███ ░███                                                                                                                                                                                                                                              
-               ░░██████                                                                                                                                                                                                                                               
-                ░░░░░░                                                                                                                                                                                                                                                
-   █████████                      ███             ███                           █████████               █████                                        █████     ███                         ██████████                      ███                                        
-  ███░░░░░███                    ░░░             ░░░                           ███░░░░░███             ░░███                                        ░░███     ░░░                         ░░███░░░░░█                     ░░░                                         
- ░███    ░███   █████  ████████  ████  ████████  ████  ████████    ███████    ░███    ░███  █████ ████ ███████    ██████  █████████████    ██████   ███████   ████   ██████  ████████      ░███  █ ░  ████████    ███████ ████  ████████    ██████   ██████  ████████ 
- ░███████████  ███░░  ░░███░░███░░███ ░░███░░███░░███ ░░███░░███  ███░░███    ░███████████ ░░███ ░███ ░░░███░    ███░░███░░███░░███░░███  ░░░░░███ ░░░███░   ░░███  ███░░███░░███░░███     ░██████   ░░███░░███  ███░░███░░███ ░░███░░███  ███░░███ ███░░███░░███░░███
- ░███░░░░░███ ░░█████  ░███ ░███ ░███  ░███ ░░░  ░███  ░███ ░███ ░███ ░███    ░███░░░░░███  ░███ ░███   ░███    ░███ ░███ ░███ ░███ ░███   ███████   ░███     ░███ ░███ ░███ ░███ ░███     ░███░░█    ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███████ ░███████  ░███ ░░░ 
- ░███    ░███  ░░░░███ ░███ ░███ ░███  ░███      ░███  ░███ ░███ ░███ ░███    ░███    ░███  ░███ ░███   ░███ ███░███ ░███ ░███ ░███ ░███  ███░░███   ░███ ███ ░███ ░███ ░███ ░███ ░███     ░███ ░   █ ░███ ░███ ░███ ░███ ░███  ░███ ░███ ░███░░░  ░███░░░   ░███     
- █████   █████ ██████  ░███████  █████ █████     █████ ████ █████░░███████    █████   █████ ░░████████  ░░█████ ░░██████  █████░███ █████░░████████  ░░█████  █████░░██████  ████ █████    ██████████ ████ █████░░███████ █████ ████ █████░░██████ ░░██████  █████    
-░░░░░   ░░░░░ ░░░░░░   ░███░░░  ░░░░░ ░░░░░     ░░░░░ ░░░░ ░░░░░  ░░░░░███   ░░░░░   ░░░░░   ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░  ░░░░░░░░    ░░░░░  ░░░░░  ░░░░░░  ░░░░ ░░░░░    ░░░░░░░░░░ ░░░░ ░░░░░  ░░░░░███░░░░░ ░░░░ ░░░░░  ░░░░░░   ░░░░░░  ░░░░░     
-                       ░███                                       ███ ░███                                                                                                                                       ███ ░███                                             
-                       █████                                     ░░██████                                                                                                                                       ░░██████                                              
-                      ░░░░░                                       ░░░░░░                                                                                                                                         ░░░░░░                                               
-        </pre>
-        <p>Bridging the gap between software <br> and hardware in industrial systems.</p>
-        <a href="#">View Projects</a> <a href="#">See Resume</a> <a href="#">Contact Me</a>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm <strong>Ayoub Ben Yedder</strong></h1>
+            <h2>Industrial Computing and Automation Engineering Student</h2>
+            <p>I'm passionate about creating innovative solutions in robotics, automation, and software development. Explore my portfolio to discover the projects I've worked on, highlighting my expertise in programming, control systems, and embedded technologies.</p>
+            <a href="#projects" class="hero-button">View My Work</a>|<a href="#projects" class="hero-button">View My Resume</a>
         </div>
-        <pre class="img">
-                       _____
-                   .d88888888bo.
-                 .d8888888888888b.
-                 8888888888888888b
-                 888888888888888888
-                 888888888888888888
-                  Y8888888888888888
-            ,od888888888888888888P
-         .'`Y8P'```'Y8888888888P'
-       .'_   `  _     'Y88888888b
-      /  _`    _ `      Y88888888b   ____
-   _  | /  \  /  \      8888888888.d888888b.
-  d8b | | /|  | /|      8888888888d8888888888b
- 8888_\ \_|/  \_|/      d888888888888888888888b
- .Y8P  `'-.            d88888888888888888888888
-/          `          `      `Y8888888888888888
-|                        __    888888888888888P
- \                       / `   dPY8888888888P'
-  '._                  .'     .'  `Y888888P`
-     `"'-.,__    ___.-'    .-'
-    jgs  `-._````  __..--'`
-             ``````
-        </pre>
-    </div>
-    <div class="about">
-        <pre class="text">
-            █████████   █████                          █████       ██████   ██████         
-            ███░░░░░███ ░░███                          ░░███       ░░██████ ██████          
-           ░███    ░███  ░███████   ██████  █████ ████ ███████      ░███░█████░███   ██████ 
-           ░███████████  ░███░░███ ███░░███░░███ ░███ ░░░███░       ░███░░███ ░███  ███░░███
-           ░███░░░░░███  ░███ ░███░███ ░███ ░███ ░███   ░███        ░███ ░░░  ░███ ░███████ 
-           ░███    ░███  ░███ ░███░███ ░███ ░███ ░███   ░███ ███    ░███      ░███ ░███░░░  
-           █████   █████ ████████ ░░██████  ░░████████  ░░█████     █████     █████░░██████ 
-          ░░░░░   ░░░░░ ░░░░░░░░   ░░░░░░    ░░░░░░░░    ░░░░░     ░░░░░     ░░░░░  ░░░░░░  
-        </pre>
-        <p>
-            I'm a 21-year-old student in my second year of Industrial Computing and Automation at INSAT. I'm passionate about blending technology with industrial processes, particularly in robotics, control systems, and automation. My studies and projects have equipped me with skills in programming, electronics, and system design. I’m eager to contribute to smarter, more efficient industrial solutions.         </p>
-    </div>
-    <div class="skills">
-        <pre class="text">
-            █████████  █████       ███  ████  ████         
-            ███░░░░░███░░███       ░░░  ░░███ ░░███         
-           ░███    ░░░  ░███ █████ ████  ░███  ░███   █████ 
-           ░░█████████  ░███░░███ ░░███  ░███  ░███  ███░░  
-            ░░░░░░░░███ ░██████░   ░███  ░███  ░███ ░░█████ 
-            ███    ░███ ░███░░███  ░███  ░███  ░███  ░░░░███
-           ░░█████████  ████ █████ █████ █████ █████ ██████ 
-            ░░░░░░░░░  ░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░░  
-        </pre>
-        <div class="list">
-            <div class="webDev">
-                <pre>
-                    █████   ███   █████          █████        ██████████                       
-                    ░░███   ░███  ░░███          ░░███        ░░███░░░░███                      
-                     ░███   ░███   ░███   ██████  ░███████     ░███   ░░███  ██████  █████ █████
-                     ░███   ░███   ░███  ███░░███ ░███░░███    ░███    ░███ ███░░███░░███ ░░███ 
-                     ░░███  █████  ███  ░███████  ░███ ░███    ░███    ░███░███████  ░███  ░███ 
-                      ░░░█████░█████░   ░███░░░   ░███ ░███    ░███    ███ ░███░░░   ░░███ ███  
-                        ░░███ ░░███     ░░██████  ████████     ██████████  ░░██████   ░░█████   
-                         ░░░   ░░░       ░░░░░░  ░░░░░░░░     ░░░░░░░░░░    ░░░░░░     ░░░░░    
-                </pre>
-                <img src="assets/html.svg" alt="HTML">
-                <img src="assets/css.svg" alt="HTML">
-                <img src="assets/javascript.svg" alt="HTML">
-                <img src="assets/php.svg" alt="HTML">
-                <img src="assets/MySQL.svg" alt="HTML">
+        <img src="assets/hero.jpg">
+    </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p style="text-align: center;">I'm a 21-year-old student in my second year of Industrial Computing and Automation at INSAT. I'm passionate about blending technology with industrial processes, particularly in robotics, control systems, and automation. My studies and projects have equipped me with skills in programming, electronics, and system design. I’m eager to contribute to smarter, more efficient industrial solutions.</p>
+    </section>
+    <section id="projects">
+        <h2 >Projects</h2>
+        <div class="card">
+            <img src="assets/image.png">
+            <div class="desc">
+                <h2>Smart Home Automation System</h2>
+                <h3>Tech used: Arduino/ESP32, Python, HTML/CSS/JS, MySQL</h3>
+                <p>Developed a smart home automation system that controls lighting, temperature, and security systems through a web interface. The system uses sensors connected to an Arduino/ESP32 board, with a backend server managing data and user preferences stored in a MySQL database.</p>
+                <a href=""><img src="assets/github.svg"> Read More</a>
             </div>
-            <div class="Programming">
-                <pre>
-                    ███████████                                                                                   ███                     
-                    ░░███░░░░░███                                                                                 ░░░                      
-                     ░███    ░███ ████████   ██████   ███████ ████████   ██████   █████████████   █████████████   ████  ████████    ███████
-                     ░██████████ ░░███░░███ ███░░███ ███░░███░░███░░███ ░░░░░███ ░░███░░███░░███ ░░███░░███░░███ ░░███ ░░███░░███  ███░░███
-                     ░███░░░░░░   ░███ ░░░ ░███ ░███░███ ░███ ░███ ░░░   ███████  ░███ ░███ ░███  ░███ ░███ ░███  ░███  ░███ ░███ ░███ ░███
-                     ░███         ░███     ░███ ░███░███ ░███ ░███      ███░░███  ░███ ░███ ░███  ░███ ░███ ░███  ░███  ░███ ░███ ░███ ░███
-                     █████        █████    ░░██████ ░░███████ █████    ░░████████ █████░███ █████ █████░███ █████ █████ ████ █████░░███████
-                    ░░░░░        ░░░░░      ░░░░░░   ░░░░░███░░░░░      ░░░░░░░░ ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░ ░░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░███
-                                                     ███ ░███                                                                      ███ ░███
-                                                    ░░██████                                                                      ░░██████ 
-                                                     ░░░░░░                                                                        ░░░░░░  
-                </pre>
-                    <img src="assets/C.svg" alt="HTML">
-                    <img src="assets/cpp.svg" alt="HTML">
-                    <img src="assets/java.svg" alt="HTML">
-                    <img src="assets/python.svg" alt="HTML">
+        </div>
+        <div class="card">
+            <img src="assets/image.png">
+            <div class="desc">
+                <h2>Robotic Arm Control Using MATLAB</h2>
+                <h3>Tech used: MATLAB, Arduino</h3>
+                <p>Designed and implemented a robotic arm control system using MATLAB for motion planning and Arduino for real-time control. The project involved developing a user-friendly interface in MATLAB to simulate and control the robotic arm's movements.</p>
+                <a href=""><img src="assets/github.svg"> Read More</a>
             </div>
-            <div class="robotics">
-                <pre>
-                    ███████████            █████               █████     ███                  
-                    ░░███░░░░░███          ░░███               ░░███     ░░░                   
-                     ░███    ░███   ██████  ░███████   ██████  ███████   ████   ██████   █████ 
-                     ░██████████   ███░░███ ░███░░███ ███░░███░░░███░   ░░███  ███░░███ ███░░  
-                     ░███░░░░░███ ░███ ░███ ░███ ░███░███ ░███  ░███     ░███ ░███ ░░░ ░░█████ 
-                     ░███    ░███ ░███ ░███ ░███ ░███░███ ░███  ░███ ███ ░███ ░███  ███ ░░░░███
-                     █████   █████░░██████  ████████ ░░██████   ░░█████  █████░░██████  ██████ 
-                    ░░░░░   ░░░░░  ░░░░░░  ░░░░░░░░   ░░░░░░     ░░░░░  ░░░░░  ░░░░░░  ░░░░░░  
-                </pre>
-                <img src="assets/arduino.svg" alt="HTML">
-                <img src="assets/esp.svg" alt="HTML">
-                <img src="assets/rasberry.svg" alt="HTML">
-                <img src="assets/KiCad.svg" alt="HTML">
-
+        </div>
+        <div class="card">
+            <img src="assets/image.png">
+            <div class="desc">
+                <h2>Autonomous Line Following Robot</h2>
+                <h3>Tech used: C/C++, Arduino, Control Theory</h3>
+                <p>Built an autonomous robot that follows a line using sensors and a microcontroller programmed in C/C++. The project focused on implementing control theory principles to maintain the robot's path and avoid obstacles.</p>
+                <a href=""><img src="assets/github.svg"> Read More</a>
             </div>
-            <div class="typeSetting">
-                <pre>
-                    ███████████                                   █████████            █████     █████     ███                     
-                    ░█░░░███░░░█                                  ███░░░░░███          ░░███     ░░███     ░░░                      
-                    ░   ░███  ░  █████ ████ ████████   ██████    ░███    ░░░   ██████  ███████   ███████   ████  ████████    ███████
-                        ░███    ░░███ ░███ ░░███░░███ ███░░███   ░░█████████  ███░░███░░░███░   ░░░███░   ░░███ ░░███░░███  ███░░███
-                        ░███     ░███ ░███  ░███ ░███░███████     ░░░░░░░░███░███████   ░███      ░███     ░███  ░███ ░███ ░███ ░███
-                        ░███     ░███ ░███  ░███ ░███░███░░░      ███    ░███░███░░░    ░███ ███  ░███ ███ ░███  ░███ ░███ ░███ ░███
-                        █████    ░░███████  ░███████ ░░██████    ░░█████████ ░░██████   ░░█████   ░░█████  █████ ████ █████░░███████
-                       ░░░░░      ░░░░░███  ░███░░░   ░░░░░░      ░░░░░░░░░   ░░░░░░     ░░░░░     ░░░░░  ░░░░░ ░░░░ ░░░░░  ░░░░░███
-                                  ███ ░███  ░███                                                                            ███ ░███
-                                 ░░██████   █████                                                                          ░░██████ 
-                                  ░░░░░░   ░░░░░                                                                            ░░░░░░  
-                </pre>
-                <img src="assets/latex.svg" style="filter: invert(1);" alt="HTML">
+        </div>
+        <div class="card">
+            <img src="assets/image.png">
+            <div class="desc">
+                <h2>Industrial Process Monitoring System</h2>
+                <h3>Tech used: ESP32, Python, MySQL, HTML/CSS/JS</h3>
+                <p>Developed an industrial process monitoring system that collects data from sensors, analyzes it in real-time using Python, and displays the results on a web dashboard. The project aimed to improve process efficiency by providing detailed insights and alerts.</p>
+                <a href=""><img src="assets/github.svg"> Read More</a>
             </div>
-        </div>                                       
-    </div>
-    <div id="circle"></div>
-    <script>
-        const text = "01001001-01001001-01000001-";
-        const circularText = document.getElementById('circle');
-        const radius = 50;
-        const characters = text.split('');
-        const angleStep = 360 / characters.length;
-
-        characters.forEach((char, i) => {
-            const span = document.createElement('span');
-            const angle = angleStep * i;
-            const x = radius * Math.cos(angle * Math.PI / 180);
-            const y = radius * Math.sin(angle * Math.PI / 180);
-            span.style.transform = `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`;
-            span.textContent = char;
-            circularText.appendChild(span);
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            const circleSize = 200; // Same as width and height of the circle
-            circularText.style.left = `${e.clientX - circleSize / 2}px`;
-            circularText.style.top = `${e.clientY - circleSize / 2}px`;
-        });
-    </script>
+        </div>
+        <div class="card">
+            <img src="assets/image.png">
+            <div class="desc">
+                <h2>MATLAB-Based Control System Simulation</h2>
+                <h3>Tech used: MATLAB, Control Theory</h3>
+                <p>Created a simulation environment in MATLAB to model and analyze various control systems, including PID controllers and state-space models. The project involved comparing the performance of different control strategies in an industrial context.</p>
+                <a href=""><img src="assets/github.svg"> Read More</a>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contacts">
+        <h2 >Contacts</h2>
+<pre>/***********************************
+You can find me here!
+<a href="#">@Email    : byedderayoub@gmail.com</a>
+<a href="#">@Phone    : +216 20 003 901</a>
+<a href="#">@Github   : ayoubbenyedder@git</a>
+<a href="#">@Linkedin : ayoubbenyedder@linkedin</a>
+<a href="#">@Facebook : ayoubbenyedder@facebook</a>
+************************************/</pre>
+</section>
+<script src="scripts/matrix.js"></script>
+<script src="scripts/cursor.js"></script>
 </body>
-
 </html>

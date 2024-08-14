@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root {
+    --bg: #222036;
+    --txt: #E1DFF4;
+    --pr: #F7C176;
+    --sec: #9DCFD9;
+    --tr: #3E8FB0;
+    --qr: #EB6E93;
+}
+html{
+    scrollbar-color: var(--sec) var(--tr);
+    scrollbar-width: thin;  
+}
+*{
+    cursor: none;
+}
+body {
+    background-color: var(--bg);
+    color: var(--txt);
+    font-family: "JetBrains Mono", Arial, sans-serif;
+    margin-left: 10vw;
+    margin-right: 10vw;  
+}
+
+h2{
+    font-size: 3rem;
+    text-align: center;
+}
+
+p{
+    font-size: 1.2rem;
+}
+
+#matrix{
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+
+#cursor{
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: 5; 
+    pointer-events: none;
+}

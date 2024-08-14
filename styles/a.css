@@ -1,0 +1,31 @@
+/* Add brackets on hover */
+a{
+    text-decoration: none;
+}
+a::before, a::after {
+    content: '';
+    
+    opacity: 0;
+    transition: opacity 0.3s, left 0.3s, right 0.3s;
+}
+
+a::before {
+    content: '[';
+    left: 0;
+    transform: translateX(-100%);
+}
+
+a::after {
+    content: ']';
+    right: 0;
+    transform: translateX(100%);
+}
+
+a:hover::before, a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+a:hover{
+    color: var(--qr);
+}

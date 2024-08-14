@@ -1,0 +1,16 @@
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.contact pre{
+    font: inherit;
+    font-size: 1.5rem;
+}
+.contact a{
+    color: var(--pr);
+}
+.contact a:hover{
+    color: var(--tr);
+}
